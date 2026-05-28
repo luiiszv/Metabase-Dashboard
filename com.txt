@@ -48,6 +48,12 @@ docker run --rm ^
 
 
 
+//Restore de la db desde Cmd
+1. Ya tener la db en el host
+
+2. Ejecuta 
+
+mongorestore --uri="mongodb://redash:redash@localhost:27018/gestion_formularios?authSource=admin" "Ruta"
 
 
 
