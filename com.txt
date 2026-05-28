@@ -1,0 +1,19 @@
+
+
+//Accede a Postgress
+docker exec -it postgres psql -U metabase -d metabaseappdb
+
+//Exportar Db 
+docker exec -t postgres pg_dump -U metabase metabaseappdb > metabase_backup.sql
+//Restaurar 
+docker exec -i postgres psql -U metabase -d metabaseappdb < metabase_backup.sql
+
+
+
+//Accede a mongo 
+docker exec -it mongito mongosh -u redash  -p redash
+
+
+
+
+
