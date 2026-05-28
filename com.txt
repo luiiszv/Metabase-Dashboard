@@ -5,6 +5,8 @@ docker exec -it postgres psql -U metabase -d metabaseappdb
 
 //Exportar Db 
 docker exec -t postgres pg_dump -U metabase metabaseappdb > metabase_backup.sql
+docker exec -t postgres pg_dump -U metabase --encoding=UTF8 metabaseappdb > metabase_backup.sql
+
 //Restaurar 
 docker exec -i postgres psql -U metabase -d metabaseappdb < metabase_backup.sql
 
