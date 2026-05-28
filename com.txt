@@ -19,3 +19,33 @@ docker exec -it mongito mongosh -u redash  -p redash
 
 
 
+
+
+
+---------------------------------------------------------------
+//Crear Backup dentro del contenedor 
+docker exec -t postgres tar czf /tmp/postgres-data.tar.gz -C /var/lib/postgresql/data .
+//Copear al host
+docker cp postgres:/tmp/postgres-data.tar.gz C:\Users\marti\Documents\Pacifico\dockerMetabse\
+
+docker cp postgres:/tmp/postgres-data.tar.gz   "ruta "
+
+--tar dentro de la ruta de postgress /data
+tar czf /tmp/postgres-data.tar.gz 
+
+Gurda en temp
+
+
+//Otra maquina 
+docker volume create postgres-data   <- Crea el volumen 
+
+//
+
+docker run --rm -v postgres-data:/var/lib/postgresql/data 
+-v C:\Users\Luis\Documents\Pacifico\dockerMetabse:/backup postgres:16 bash 
+-c "cd /var/lib/postgresql/data && tar xzf /backup/postgres-data.tar.gz --strip 1"
+
+
+
+
+
