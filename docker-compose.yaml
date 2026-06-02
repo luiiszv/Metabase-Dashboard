@@ -11,9 +11,8 @@ services:
       MB_DB_USER: metabase
       MB_DB_PASS: mysecretpassword
       MB_DB_HOST: postgres
-    sysctls:
-      net.ipv4.ip_unprivileged_port_start: "1024"
-
+    security_opt:
+      - seccomp:unconfined
   postgres:
     image: postgres:16
     container_name: postgres
@@ -26,8 +25,8 @@ services:
       POSTGRES_PASSWORD: mysecretpassword
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    sysctls:
-      net.ipv4.ip_unprivileged_port_start: "1024"
+    security_opt:
+      - seccomp:unconfined
     # mongo:
     #   image: mongo:6.0
     #   container_name: mongito

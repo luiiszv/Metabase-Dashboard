@@ -38,7 +38,7 @@ Gurda en temp
 
 //Otra maquina 
 docker volume create postgres-data   <- Crea el volumen 
-docker 
+docker volume create metabase-dashboard_postgres-data
 //
 
 docker run --rm ^
