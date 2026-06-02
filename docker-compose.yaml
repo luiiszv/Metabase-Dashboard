@@ -1,6 +1,5 @@
-
 services:
-  metabse:
+  metabase:
     image: metabase/metabase:latest
     container_name: metabase
     ports:
@@ -12,30 +11,34 @@ services:
       MB_DB_USER: metabase
       MB_DB_PASS: mysecretpassword
       MB_DB_HOST: postgres
+    sysctls:
+    net.ipv4.ip_unprivileged_port_start: 1024
 
   postgres:
     image: postgres:16
     container_name: postgres
     hostname: postgres
     ports:
-    - "5432:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: metabase
       POSTGRES_DB: metabaseappdb
       POSTGRES_PASSWORD: mysecretpassword
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    sysctls:
+    net.ipv4.ip_unprivileged_port_start: 1024
 
-  # mongo:
-  #   image: mongo:6.0
-  #   container_name: mongito
-  #   ports:
-  #     - "27018:27017"
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: redash
-  #     MONGO_INITDB_ROOT_PASSWORD: redash
-  #   volumes:
-  #     - mongo-data:/data/db
+    # mongo:
+    #   image: mongo:6.0
+    #   container_name: mongito
+    #   ports:
+    #     - "27018:27017"
+    #   environment:
+    #     MONGO_INITDB_ROOT_USERNAME: redash
+    #     MONGO_INITDB_ROOT_PASSWORD: redash
+    #   volumes:
+    #     - mongo-data:/data/db
 
     # restart: unless-stopped 
 
