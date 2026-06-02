@@ -12,7 +12,7 @@ services:
       MB_DB_PASS: mysecretpassword
       MB_DB_HOST: postgres
     sysctls:
-    net.ipv4.ip_unprivileged_port_start: "1024"
+      net.ipv4.ip_unprivileged_port_start: "1024"
 
   postgres:
     image: postgres:16
@@ -27,8 +27,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     sysctls:
-    net.ipv4.ip_unprivileged_port_start: "1024"
-
+      net.ipv4.ip_unprivileged_port_start: "1024"
     # mongo:
     #   image: mongo:6.0
     #   container_name: mongito
